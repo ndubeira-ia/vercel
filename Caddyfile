@@ -1,0 +1,14 @@
+victoriadegratitud.com.ar, www.victoriadegratitud.com.ar {
+  encode zstd gzip
+  tls {
+    # Cert auto con Let's Encrypt
+  }
+  @static path /_next/* /favicon* /robots.txt /sitemap.xml
+  handle @static {
+    reverse_proxy web:3000
+  }
+  handle {
+    reverse_proxy web:3000
+  }
+  log
+}
